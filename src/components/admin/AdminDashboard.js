@@ -189,6 +189,7 @@ const AdminDashboard = () => {
         open={isUpdateModalOpen}
         style={{top:"20px"}}
         onOk={handleOk}
+        okText="Update"
         width={750}
         onCancel={handleCancel}
       >
