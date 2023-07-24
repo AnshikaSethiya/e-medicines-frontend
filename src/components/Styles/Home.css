@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,600&family=PT+Sans+Narrow&display=swap');
+
+
+.first-text{
+    /* margin-left:4rem; */
+    margin-top:8rem;
+    line-break: auto;
+}
+.first-text h1{
+    font-size:4rem;
+    color: #3D405B;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    /* animation: text 6s infinite; */
+}
+
+.shop-btn{
+    margin-top: 1rem;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    outline:none;
+    background-color: #3D405B;
+    border: none;
+    letter-spacing: 0.1rem;
+    box-shadow: inset 0 0 0 0 #D30000;
+    transition: ease-out 0.3s;
+    text-transform: uppercase;
+    color: #F4F1DE;
+}
+.shop-btn:hover{
+    box-shadow: inset 10rem 0 0 0 #D30000;
+    transition:linear 0.2s;
+}
+
+#services{
+    background-attachment: fixed;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#services h1{
+    text-align: center;
+    color: #000000 !important;
+    padding-bottom: 10px;
+}
+
+#services h1::after{
+    content: '';
+    background: #f5b921;
+    display: block;
+    height: 3px;
+    width: 170px;
+    margin: 20px auto 5px;
+}
+
+.services .col-md-3:hover {
+    background-color: #ff6666;
+    cursor: pointer;
+    transition: .7s;
+}
+.icon{
+    font-size:40px ;
+    margin: 20px auto;
+    padding: 20px;
+    height: 80px;
+    width: 80px;
+    /* border: 1px solid #fff; */
+    /* border-radius: 50%; */
+}
+
+.container-carousel{
+    width: 75%;
+    position: relative;
+    left: 12%;
+}
+
+
+/* Membdership section */
+.mem-ship{
+    margin: 0 0 32px;
+    display: flex;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 1.5rem;
+}
+
+.mShip{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px 0 0;
+  }
+
+.mem-ship .mShip .top {
+    float: left;
+    width: 160px;
+}
+
+.mem-ship .mShip .mainFrMemDiv {
+    width: calc(100% - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mem-ship .mShip .mainFrMemDiv .first-member {
+    float: left;
+}
+
+.mem-ship .mShip .mainFrMemDiv .first-member h1 {
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'PT Sans Narrow', sans-serif; */
+    font-size: 28px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.17;
+    letter-spacing: .25px;
+    text-align: left;
+    color: #0b1219;
+    padding: 0;
+    margin: 0;
+}
+
+.mem-ship .mShip .mainFrMemDiv .first-member ul {
+    padding: 0;
+    list-style: none;
+    margin: 8px 0 0;
+}
+
+.mem-ship .mShip .mainFrMemDiv .first-member ul li {
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(11,18,25,.75);
+    margin: 4px 0 0;
+}
+
+.mem-ship .mShip .mainFrMemDiv .pricingInfo {
+    display: flex;
+}
+
+.mem-ship .mShip .mainFrMemDiv .pricingInfo .start-msg {
+    flex-grow: 0;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: right;
+    color: #ef4281;
+    margin-right: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.mem-ship .mShip .mainFrMemDiv .pricingInfo .explore-plans {
+    width: 169px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-image: linear-gradient(75deg,#fbc82f,#fff48a 100%),linear-gradient(to bottom,#0b1219,#0b1219);
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 3.43;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #0b1219;
+}

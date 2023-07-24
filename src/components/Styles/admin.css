@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* admin dashboard */
+.ant-table-wrapper .ant-table {
+    font-size: 16px;
+    height: 50%;
+}
