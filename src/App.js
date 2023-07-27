@@ -8,10 +8,10 @@ import Products from './components/users/Products';
 import MedicineDisplay from './components/users/MedicineDisplay';
 import Orders from './components/users/Orders';
 import Cart from './components/users/Cart';
-import Header from './components/users/Header';
+import Header from './components/Header';
 import Home from './components/Home';
 import AdminDashboard from './components/admin/AdminDashboard';
-
+import AddMedicine from './components/admin/AddMedicine';
 
 // {path:"/admindashboard", element:<AdminDashboard />},
 // {path:"/adminorders", element:<AdminOrders />},
@@ -32,6 +32,7 @@ function App() {
                   <Route exact path="/profile" element={<Profile />} />
                   <Route exact path="/mycart" element={<Cart/>} />
                   <Route exact path='/admindashboard' element={<AdminDashboard />} />
+                  <Route exact path='/addMedicine' element={<AddMedicine />} />
                </Routes>
             <Footer />
     </div>
@@ -39,3 +40,4 @@ function App() {
 }
 
 export default App;
+ 

@@ -24,12 +24,15 @@ const Login = () => {
       const dt = result.data;
       console.log(dt)
       if(dt.statusCode === 200){
-        if(data.Email == "admin123@gmail.com" && data.Password=="admin"){
-            localStorage.setItem("Admin", values.Email);
+        if(dt.user.type == "Admin "){
+            localStorage.setItem("Email", values.Email);
+            localStorage.setItem("Type", dt.user.type);
+            localStorage.setItem("UserId", dt.user.id);
             window.location.href = "/admindashboard";
         }else{
           localStorage.setItem("Email",values.Email);
           localStorage.setItem("UserId",dt.user.id)
+          localStorage.setItem("Type", dt.user.type)
           window.location.href = "/products";
         }
         console.log("good")

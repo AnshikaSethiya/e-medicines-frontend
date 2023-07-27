@@ -2,7 +2,6 @@ import { Col, Row, Card, Button, Space } from "antd";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { baseUrl } from "../Constants";
-import Header from "./Header";
 import "./../Styles/Medicine.css";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";

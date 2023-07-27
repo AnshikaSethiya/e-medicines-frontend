@@ -23,6 +23,7 @@ const AdminDashboard = () => {
   const { confirm } = Modal;
   const [updateForm] = Form.useForm();
   const [data, setData] = useState([]);
+  const [date, setDate] = useState(null);
   const [pagination, setPagination] = useState({ current: 1, pageSize: 8 });
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
@@ -156,10 +157,17 @@ const AdminDashboard = () => {
     setIsUpdateModalOpen(false);
   };
 
+  const handleDateTmeChange = (value) => {
+    console.log("value ",value)
+    setDate(value);
+  }
+
   //update medicine
   const updateMedicine = (item) => {
-      // console.log(item);
-      const expiryDate = moment(item.expDate, "YYYY-MM-DD HH:mm:ss")
+    const parsedDate = moment(item.expDate, "YYYY-MM-DD HH:mm");
+    setDate(parsedDate)
+    console.log("date: ", parsedDate);
+      // const expiryDate = moment(item.expDate, "YYYY-MM-DD HH:mm")
       updateForm.setFieldsValue({
         id: item.id,
         name: item.name,
@@ -167,7 +175,7 @@ const AdminDashboard = () => {
         quantity: item.quantity,
         imageUrl: item.imageUrl,
         unitPrice: item.unitPrice,
-        expDate: expiryDate,
+        expDate: date,
         details: item.details
       });
       showModal();
@@ -216,8 +224,7 @@ const AdminDashboard = () => {
             </Form.Item>
 
             <Form.Item label="Expire Date" name="expDate" rules={[{ required: true, message: 'Please input expiry date' }]}>
-              <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
-              {/* <Input /> */}
+              <DatePicker showTime value={date} onChange={handleDateTmeChange} format="YYYY-MM-DD HH:mm"  />
             </Form.Item>
 
             <Form.Item
