@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BiRupee } from "react-icons/bi";
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import {PercentageOutlined} from "@ant-design/icons";
+import locale from 'antd/es/date-picker/locale/zh_CN';
 import { RiEdit2Line, RiDeleteBin7Line } from "react-icons/ri";
 import {
   Space,
@@ -11,6 +15,7 @@ import {
   Input,
   DatePicker,
   InputNumber,
+  Button
 } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import axios from "axios";
@@ -157,29 +162,52 @@ const AdminDashboard = () => {
     setIsUpdateModalOpen(false);
   };
 
-  const handleDateTmeChange = (value) => {
-    console.log("value ",value)
-    setDate(value);
-  }
-
-  //update medicine
+  //on click of action button set medicine in modal
   const updateMedicine = (item) => {
-    const parsedDate = moment(item.expDate, "YYYY-MM-DD HH:mm");
+    // const parsedDate = moment(item.expDate, "YYYY-MM-DD");
+    const parsedDate = moment(item.expDate).format("YYYY-MM-DD");
+    // console.log("date: ", parsedDate);
     setDate(parsedDate)
-    console.log("date: ", parsedDate);
-      // const expiryDate = moment(item.expDate, "YYYY-MM-DD HH:mm")
       updateForm.setFieldsValue({
         id: item.id,
         name: item.name,
         manufacturer: item.manufacturer,
         quantity: item.quantity,
+        discount:item.discount,
         imageUrl: item.imageUrl,
         unitPrice: item.unitPrice,
-        expDate: date,
         details: item.details
       });
       showModal();
   };  
+
+  // on click of update button
+  const onClickUpdate = (values) => {
+    // console.log("set date: ", date);
+    const data = {
+      id: values.id,
+      name: values.name,
+      manufacturer: values.manufacturer,
+      quantity: values.quantity,
+      discount: values.discount,
+      imageUrl: values.imageUrl,
+      unitPrice: values.unitPrice,
+      details: values.details,
+      expDate: date,
+      status: 0,
+      type: "",
+    }
+    // console.log("values: ", data)
+    const url = `${baseUrl}/Admin/updateMedicine`
+    axios
+    .put(url, data)
+    .then((response) => {
+      toast.success(response.data.statusMessage);
+      // console.log(response.data)
+    }).catch((err) => {console.log("err in update status: ", err)});
+    handleCancel();
+    getData();
+  }
 
   return (
     <div className="container">
@@ -200,8 +228,23 @@ const AdminDashboard = () => {
         okText="Update"
         width={750}
         onCancel={handleCancel}
+        footer={
+          <div key="userModalFooter">
+            <Button key="back" onClick={handleCancel}>
+              Cancel
+            </Button>
+            <Button
+              key="submit"
+              type="primary"
+              htmlType="submit"
+              form="updateForm"
+            >
+              Update
+            </Button>
+          </div>
+        }
       >
-        <Form name="updateForm" form={updateForm} autoComplete="off">
+        <Form name="updateForm" form={updateForm} onFinish={onClickUpdate} autoComplete="off">
           <Card>
             <Form.Item label="id" name="id" hidden="true">
               <Input />
@@ -216,15 +259,30 @@ const AdminDashboard = () => {
             </Form.Item>
 
             <Form.Item label="Quantity" name="quantity" rules={[{ required: true, message: 'Please input quantity' }]}>
-              <InputNumber type="number"/>
+              <InputNumber type="number"  style={{ width: 550 }}/>
             </Form.Item>
 
             <Form.Item label="Unit Price" name="unitPrice" rules={[{ required: true, message: 'Please input unit price' }]}>
               <Input type="number" prefix={<BiRupee />} />
             </Form.Item>
 
-            <Form.Item label="Expire Date" name="expDate" rules={[{ required: true, message: 'Please input expiry date' }]}>
-              <DatePicker showTime value={date} onChange={handleDateTmeChange} format="YYYY-MM-DD HH:mm"  />
+            <Form.Item
+            label="Discount"
+            name="discount"
+            rules={[{ required: true, message: "Please input discount" }]}
+          >
+            <InputNumber
+              type="number"
+              style={{ width: 550 }}
+              prefix={<PercentageOutlined />}
+            />
+          </Form.Item>
+
+            <Form.Item hidden="true" label="Expire Date" name="expDate">
+              {/* <DatePicker value={date} onChange={handleDateTmeChange} format="YYYY-MM-DD" style={{ width: 550 }} /> */}
+              {/* <DatePicker value={date ? moment(date, "YYYY-MM-DD") : null}  format={dateFormat} /> */}
+              {/* <DatePicker defaultValue={dayjs("2025-09-01", dateFormat)} format={dateFormat}/> */}
+              <DatePicker value="expDate" />
             </Form.Item>
 
             <Form.Item

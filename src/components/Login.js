@@ -1,10 +1,10 @@
 import React from "react";
-import "./Styles/Login.css";
+import "./Styles/Login&Register.css";
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form, Input, Checkbox, Button, Row, Col } from "antd";
 import { baseUrl } from "./Constants";
 import axios from "axios";
-import MainImage from "./assets/eMedicine-Image.svg"
+import MainImage from "./assets/undraw_med.svg"
 import {Link} from "react-router-dom"
 
 const Login = () => {
@@ -87,13 +87,13 @@ const Login = () => {
               {/* <!-- Email input --> */}
               <div className="mb-4">
                 <Form.Item
-                  id="form3Example3"
+                  // id="form3Example3"
                   name="Email"
                   rules={[
                     { required: true, message: "Please input your email!" },
                   ]}
                 >
-                  <Input placeholder="Email" prefix={<MailOutlined className="site-form-item-icon" />}/>
+                  <Input  size="large" placeholder="Email" prefix={<MailOutlined className="site-form-item-icon" />}/>
                 </Form.Item>
               </div>
 
@@ -105,7 +105,7 @@ const Login = () => {
                     { required: true, message: "Please input your password!" },
                   ]}
                 >
-                  <Input.Password placeholder="Password" prefix={<LockOutlined className="site-form-item-icon" />} />
+                  <Input.Password  size="large" placeholder="Password" prefix={<LockOutlined className="site-form-item-icon" />} />
                 </Form.Item>
               </div>
 
@@ -135,10 +135,7 @@ const Login = () => {
                 </Form.Item>
                 <p className="small fw-bold mt-2 pt-1 mb-0">
                   Don't have an account?{" "}
-                  {/* <a href="#!" className="link-danger">
-                    Register
-                  </a> */}
-                  <Link to="/register" className="link-danger">Register</Link>
+                  <Link to="/register" className="link-color">Register</Link>
                 </p>
               </div>
             </Form>

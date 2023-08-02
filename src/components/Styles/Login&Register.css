@@ -1,10 +1,23 @@
 .btn-color{
-  background-color: #D30000;
-  color:#eee;
+  background-color: #eea676;
+  color: #036c5f;
 }
+
 .bg-color{
-  background-color: #D30000;
+  background-color: #eea676;
 }
+
+.btn-color:hover{
+  border: none;
+  background-color: #036c5f;
+  color: #eea676;
+}
+
+.link-color{
+  color: #036c5f;
+  font-size: 16px;
+}
+
 .divider:after,
 .divider:before {
   content: "";

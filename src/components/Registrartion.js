@@ -1,18 +1,17 @@
 import React from "react";
-import "./Styles/Login.css";
+import "./Styles/Login&Register.css";
 import axios from "axios";
 import { baseUrl } from "./Constants";
 import "react-toastify/dist/ReactToastify.css";
 import { Form, Alert, Input, Button, Space, Row, Col } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import MainImage from "./assets/eMedicine-Image.svg";
+import MainImage from "./assets/undraw_med.svg";
 
 const Registrartion = () => {
   const [RegisterForm] = Form.useForm();
 
   const onFormSubmit = (values) => {
-    // console.log(values);
     const data = {
       firstName: values.FirstName,
       lastName: values.LastName,
@@ -71,7 +70,7 @@ const Registrartion = () => {
                     },
                   ]}
                 >
-                  <Input placeholder="First Name" />
+                  <Input placeholder="First Name" size="large"/>
                 </Form.Item>
               </div>
 
@@ -84,7 +83,7 @@ const Registrartion = () => {
                     { required: true, message: "Please input your last name!" },
                   ]}
                 >
-                  <Input placeholder="Last Name" />
+                  <Input placeholder="Last Name" size="large" />
                 </Form.Item>
               </div>
 
@@ -98,7 +97,7 @@ const Registrartion = () => {
                     { required: true, message: "Please input your email!" },
                   ]}
                 >
-                  <Input placeholder="Email" />
+                  <Input placeholder="Email" size="large" />
                 </Form.Item>
               </div>
 
@@ -110,7 +109,7 @@ const Registrartion = () => {
                     { required: true, message: "Please input your password!" },
                   ]}
                 >
-                  <Input.Password placeholder="Password" />
+                  <Input.Password placeholder="Password" size="large" />
                 </Form.Item>
               </div>
 
@@ -122,7 +121,7 @@ const Registrartion = () => {
                     { required: true, message: "Please input your password!" },
                   ]}
                 >
-                  <Input.Password placeholder="Confirm Password" />
+                  <Input.Password placeholder="Confirm Password" size="large" />
                 </Form.Item>
               </div>
 
@@ -146,13 +145,13 @@ const Registrartion = () => {
 
               <div className="text-center text-lg-start mt-4 pt-2">
                 <Form.Item className="btn-primary btn-lg">
-                  <Button className="btn btn-danger" htmlType="submit">
+                  <Button className="btn-color" htmlType="submit">
                     Register
                   </Button>
                 </Form.Item>
                 <p className="small fw-bold mt-2 pt-1 mb-0">
                   Already have an account?{" "}
-                  <Link to="/login" className="link-danger">
+                  <Link to="/login" className="link-color">
                     Login
                   </Link>
                 </p>

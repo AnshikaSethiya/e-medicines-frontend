@@ -137,7 +137,7 @@ const Orders = () => {
   };
 
   const showModal = () => {
-    console.log("data: ", orderDetail);
+    // console.log("data: ", orderDetail);
     setOpenDetails(true);
   };
 

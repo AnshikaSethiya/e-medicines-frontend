@@ -96,7 +96,6 @@ const Cart = () => {
 
   //Function to get cart data
   const getData = () => {
-    // console.log("get data called!!");
     const Url = `${baseUrl}/Users/getCartItem?Id=${id}`;
     axios
       .get(Url)
@@ -219,19 +218,28 @@ const Cart = () => {
               )}
             />
           ) : (
-            <div className="position-absolute top-50 start-50 translate-middle d-flex flex-column align-item-center justify-content-center">
-              <BsBagPlus
-                style={{
-                  fontSize: "12rem",
-                  color: "#D30000",
-                  marginBottom: "5px",
-                }}
-              />
-              <h4>Add Items to Cart</h4>
-              <Link to="/products">
-                <Button style={{ color: "#f5b921" }}>Start Shopping</Button>
-              </Link>
+            <div className="container h-100">
+                <div>
+                  <BsBagPlus style={{fontSize:"12rem", paddingTop:"2rem"}}/>
+                  <h4>Add Item to Cart </h4>
+                  <Link to="/products">
+                     <Button style={{ color: "#f5b921" }}>Start Shopping</Button>
+                  </Link>
+                </div>
             </div>
+            // <div className="position-absolute top-50 start-50 traslate-middle  d-flex flex-column align-item-center justify-content-center">
+            //   <BsBagPlus
+            //     style={{
+            //       fontSize: "12rem",
+            //       color: "#D30000",
+            //       // marginBottom: "5px",
+            //     }}
+            //   />
+            //   <h4>Add Items to Cart</h4>
+            //   <Link to="/products">
+            //     <Button style={{ color: "#f5b921" }}>Start Shopping</Button>
+            //   </Link>
+            // </div>
           )
         ) : (
           <h2>User not logged in!!</h2>
