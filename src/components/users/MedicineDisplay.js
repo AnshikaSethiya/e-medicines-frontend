@@ -1,10 +1,10 @@
-import { Col, Space, Typography, Row } from "antd";
+import { Col, Space, Typography, Row, Tooltip, Button } from "antd";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { baseUrl } from "../Constants";
 import moment from "moment";
 import "./../Styles/Medicine.css";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -67,9 +67,14 @@ const MedicineDisplay = () => {
       });
   };
 
-  // console.log("data: ", userId);
   return (
     <div>
+      <Tooltip title="back">
+        <Link to="/products">
+            <Button ghost type="primary" shape="circle" icon={<ArrowLeftOutlined />} 
+            style={{float:"left", marginLeft:"10%",marginTop:"1rem"}}/>
+        </Link>
+      </Tooltip>
       <Space>
         <Row gutter={[16, 16]} justify="center" style={{ marginTop: "4rem"}}>
           <Col lg={12} md={10} sm={10} xs={24} style={{ backgroundColor: "" }}>

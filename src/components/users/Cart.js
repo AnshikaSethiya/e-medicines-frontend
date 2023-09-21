@@ -114,7 +114,7 @@ const Cart = () => {
 
   // show modal on click of place order button
   const showModal = () => {
-    console.log("data of items in cart: ", data);
+    // console.log("data of items in cart: ", data);
     let CartValue = 0;
     data &&
       data.forEach((item) => {
@@ -227,19 +227,6 @@ const Cart = () => {
                   </Link>
                 </div>
             </div>
-            // <div className="position-absolute top-50 start-50 traslate-middle  d-flex flex-column align-item-center justify-content-center">
-            //   <BsBagPlus
-            //     style={{
-            //       fontSize: "12rem",
-            //       color: "#D30000",
-            //       // marginBottom: "5px",
-            //     }}
-            //   />
-            //   <h4>Add Items to Cart</h4>
-            //   <Link to="/products">
-            //     <Button style={{ color: "#f5b921" }}>Start Shopping</Button>
-            //   </Link>
-            // </div>
           )
         ) : (
           <h2>User not logged in!!</h2>

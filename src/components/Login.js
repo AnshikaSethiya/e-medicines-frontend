@@ -6,6 +6,7 @@ import { baseUrl } from "./Constants";
 import axios from "axios";
 import MainImage from "./assets/undraw_med.svg"
 import {Link} from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const [loginForm] = Form.useForm();
@@ -15,14 +16,14 @@ const Login = () => {
       Email: values.Email,
       Password: values.Password,
     };
-    console.log(data);
+    // console.log(data);
 
     const url = `${baseUrl}/Users/login`;
     axios.
     post(url,data)
     .then((result) => {
       const dt = result.data;
-      console.log(dt)
+      // console.log(dt)
       if(dt.statusCode === 200){
         if(dt.user.type == "Admin "){
             localStorage.setItem("Email", values.Email);
@@ -35,10 +36,11 @@ const Login = () => {
           localStorage.setItem("Type", dt.user.type)
           window.location.href = "/products";
         }
-        console.log("good")
+        // console.log("good")
       } 
       else{
-        console.log("something went wrong");
+        // console.log(dt.statusMessage);
+        toast.success(dt.statusMessage);
       }
     }).catch((err) => console.log("error in login: ",err));
   };
@@ -113,12 +115,12 @@ const Login = () => {
                 {/* <!-- Checkbox --> */}
                 <div class="form-check mb-0">
                   <input
-                    class="form-check-input me-2"
+                    className="form-check-input me-2"
                     type="checkbox"
                     value=""
                     id="form2Example3"
                   />
-                  <label class="form-check-label" for="form2Example3">
+                  <label className="form-check-label" style={{color:"black"}} htmlFor="form2Example3">
                     Remember me
                   </label>
                 </div>
@@ -141,6 +143,7 @@ const Login = () => {
             </Form>
           </Col>
         </Row>
+        <ToastContainer />
       </div>
 
     </section>

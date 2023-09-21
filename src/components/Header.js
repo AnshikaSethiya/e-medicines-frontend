@@ -21,160 +21,6 @@ const Header = () => {
   console.log();
 
   return (
-    // <div>
-    //   <div className={click ? "main-container" : ""} onClick={() => Close()} />
-    //   <nav className="navbar" onClick={(e) => e.stopPropagation()}>
-    //     <div className="nav-container">
-    //       <NavLink exact to="/" className="nav-logo d-flex">
-    //         e-Medicines <FaHandHoldingMedical />
-    //       </NavLink>
-
-    //       {type === "Admin " ? (
-    //         <ul className={click ? "nav-menu active" : "nav-menu"}>
-    //           <li className="nav-item">
-    //             <NavLink
-    //               exact
-    //               to="/admindashboard"
-    //               activeClassName="active"
-    //               className="nav-links"
-    //               onClick={click ? handleClick : null}
-    //             >
-    //               Dashboard
-    //             </NavLink>
-    //           </li>
-    //           <li className="nav-item">
-    //             <NavLink
-    //               exact
-    //               to="/addMedicine"
-    //               activeClassName="active"
-    //               className="nav-links"
-    //               onClick={click ? handleClick : null}
-    //             >
-    //               Add Product
-    //             </NavLink>
-    //           </li>
-    //           <li className="nav-item">
-    //             <NavLink
-    //               exact
-    //               to="/customer"
-    //               activeClassName="active"
-    //               className="nav-links"
-    //               onClick={click ? handleClick : null}
-    //             >
-    //               User List
-    //             </NavLink>
-    //           </li>
-    //           <li className="nav-item">
-    //             <NavLink
-    //               exact
-    //               to="/orderList"
-    //               activeClassName="active"
-    //               className="nav-links"
-    //               onClick={click ? handleClick : null}
-    //             >
-    //               Orders
-    //             </NavLink>
-    //           </li>
-    //           {
-    //             id ?
-    //             (
-    //               <li className="nav-item">
-    //               <NavLink
-    //                 exact
-    //                 to="/blog"
-    //                 activeClassName="active"
-    //                 className="nav-links"
-    //                 // onClick={click ? handleClick : null}
-    //                 onClick={onClickLogout}
-    //               >
-    //                 Log Out <AiOutlineLogout />
-    //               </NavLink>
-    //             </li>
-    //             ) : (<></>)
-    //           }
-    //         </ul>
-    //       ) : (
-    //         <ul className={click ? "nav-menu active" : "nav-menu"}>
-    //           <li className="nav-item">
-    //             <NavLink
-    //               exact
-    //               to="/products"
-    //               activeClassName="active"
-    //               className="nav-links"
-    //               onClick={click ? handleClick : null}
-    //             >
-    //               Products
-    //             </NavLink>
-    //           </li>
-
-    //           {id ? (
-    //             <>
-    //               <li className="nav-item">
-    //                 <NavLink
-    //                   exact
-    //                   to="/mycart"
-    //                   activeClassName="active"
-    //                   className="nav-links"
-    //                   onClick={click ? handleClick : null}
-    //                 >
-    //                   Cart
-    //                 </NavLink>
-    //               </li>
-
-    //               <li className="nav-item">
-    //                 <NavLink
-    //                   exact
-    //                   to="/orders"
-    //                   activeClassName="active"
-    //                   className="nav-links"
-    //                   onClick={click ? handleClick : null}
-    //                 >
-    //                   Orders
-    //                 </NavLink>
-    //               </li>
-
-    //               <li className="nav-item">
-    //                 <NavLink
-    //                   exact
-    //                   to="/blog"
-    //                   activeClassName="active"
-    //                   className="nav-links"
-    //                   // onClick={click ? handleClick : null}
-    //                   onClick={onClickLogout}
-    //                 >
-    //                   Log Out <AiOutlineLogout />
-    //                 </NavLink>
-    //               </li>
-    //             </>
-    //           ) : (
-    //             <></>
-    //           )}
-
-    //           {id ? (
-    //             <></>
-    //           ) : (
-    //             <>
-    //               <li className="nav-item">
-    //                 <NavLink
-    //                   exact
-    //                   to="/login"
-    //                   activeClassName="active"
-    //                   className="nav-links"
-    //                   onClick={click ? handleClick : null}
-    //                 >
-    //                   Sign Up/ Sign In
-    //                 </NavLink>
-    //               </li>
-    //             </>
-    //           )}
-    //         </ul>
-    //       )}
-    //       <div className="nav-icon" onClick={handleClick}>
-    //         <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
-    //       </div>
-    //     </div>
-    //   </nav>
-    // </div>
     <nav className="navbar navbar-expand-lg navbar-light py-3 sticky-top linear-bg">
       <div className="container">
         {/* <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/"> React Ecommerce</NavLink> */}
@@ -196,13 +42,21 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav m-auto my-2 text-center">
             {
-              id ? (<></>) : (<>
+              id && type==="User" ? (<>
                  <li className="nav-item text-center">
                   <NavLink className="nav-link" to="/products">
                     Products
                   </NavLink>
                 </li>
+
+                <li className="nav-item text-center">
+                  <NavLink className="nav-link" to="/orders">
+                    Orders
+                  </NavLink>
+                </li>
               </>)
+              :
+              (<></>)  
             }
             {type === "Admin " ? (
               <>
@@ -248,6 +102,13 @@ const Header = () => {
             </li> */}
           </ul>
           <div className=" buttons text-center">
+          {id && type !== "Admin " ? (
+              <NavLink to="/mycart" className="btn btn-outline-dark m-2">
+                <i className="fa fa-cart-shopping mr-1"></i> Cart{" "}
+              </NavLink>
+            ) : (
+              <></>
+            )}
             {id ? (
               <>
                 <NavLink
@@ -275,13 +136,13 @@ const Header = () => {
                 </NavLink>
               </>
             )}
-            {id && type !== "Admin " ? (
+            {/* {id && type !== "Admin" ? (
               <NavLink to="/mycart" className="btn btn-outline-dark m-2">
                 <i className="fa fa-cart-shopping mr-1"></i> Cart{" "}
               </NavLink>
             ) : (
               <></>
-            )}
+            )} */}
           </div>
         </div>
       </div>

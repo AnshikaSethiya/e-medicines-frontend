@@ -127,14 +127,14 @@ const Registrartion = () => {
 
               <div className="d-flex justify-content-between align-items-center">
                 {/* <!-- Checkbox --> */}
-                <div class="form-check mb-0">
+                <div className="form-check mb-0">
                   <input
-                    class="form-check-input me-2"
+                    className="form-check-input me-2"
                     type="checkbox"
                     value=""
                     id="form2Example3"
                   />
-                  <label class="form-check-label" for="form2Example3">
+                  <label className="form-check-label" htmlFor="form2Example3" style={{color:"black"}}>
                     Remember me
                   </label>
                 </div>
